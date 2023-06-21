@@ -12,7 +12,7 @@ async function main() {
 
   // Goerli USDC 0x07865c6e87b9f70255377e024ace6630c1eaa37f
   const l2Bridge = '0x4200000000000000000000000000000000000010'
-  const l1Token = '0x509Ee0d083DdF8AC028f2a56731412edD63223B9'
+  const l1Token = '0xfad6367e97217cc51b4cd838cc086831f81d38c2'
 
   //
   //L2 USDT Token deployed to: 0x6AE0a402C6113E262c9A1E0636cCEc7B1B30DEDc
