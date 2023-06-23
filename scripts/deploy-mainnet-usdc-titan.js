@@ -8,17 +8,15 @@ const hre = require("hardhat");
 const { ethers, run } = require("hardhat");
 
 async function main() {
-  // deploy USDC on tokamak goerli
 
-  // Goerli USDC 0x07865c6e87b9f70255377e024ace6630c1eaa37f
+  // mainnet USDC 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48
   const l2Bridge = "0x4200000000000000000000000000000000000010"
-  const l1Token = "0x07865c6e87b9f70255377e024ace6630c1eaa37f"
+  const l1Token = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
   const tokenName = 'USD Coin'
   const tokenSymbol = 'USDC'
-  //const owner = "0xc1eba383D94c6021160042491A5dfaF1d82694E6"
+  //const owner = ""
   const decimals = 6;
 
-  //https://goerli.explorer.tokamak.network/address/0x98F4df7C282F26C8992801f495c0060AfcE45bb9/contracts#address-tabs
   const l2usdc = await hre.ethers.deployContract("OVMFiatToken",
     [l2Bridge,
     l1Token,
