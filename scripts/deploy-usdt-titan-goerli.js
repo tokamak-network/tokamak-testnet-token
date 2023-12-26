@@ -6,23 +6,36 @@
 const hre = require("hardhat");
 
 const { ethers, run } = require("hardhat");
+const USDTABI = require("../artifacts/contracts/USDT.sol/USDT.json")
 
 async function main() {
-  // deploy USDC on tokamak goerli
 
-  // Goerli USDC 0x07865c6e87b9f70255377e024ace6630c1eaa37f
+  let deployers = await ethers.getSigners();
+  let deployer = deployers[0]
+
   const l2Bridge = '0x4200000000000000000000000000000000000010'
   const l1Token = '0xfad6367e97217cc51b4cd838cc086831f81d38c2'
 
+  let factory = new hre.ethers.ContractFactory(USDTABI.abi, USDTABI.bytecode, deployer);
+  const contract = await factory.deploy(
+      l2Bridge,
+      l1Token
+      );
+
+  await contract.deployed();
+
+  console.log("L2 USDT Token deployed to:", contract.address);
+
+
   //
   //L2 USDT Token deployed to: 0x6AE0a402C6113E262c9A1E0636cCEc7B1B30DEDc
-  const l2usdt = await hre.ethers.deployContract("USDT",
-    [l2Bridge, l1Token]  );
+  // const l2usdt = await hre.ethers.deployContract("USDT",
+  //   [l2Bridge, l1Token]  );
 
-  await l2usdt.waitForDeployment();
+  // await l2usdt.waitForDeployment();
 
 
-  console.log("L2 USDT Token deployed to:", l2usdt.target);
+  // console.log("L2 USDT Token deployed to:", l2usdt.target);
 
   // await run("verify", {
   //   address: l2usdt.target,

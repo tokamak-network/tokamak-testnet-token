@@ -9,30 +9,8 @@ const deployContract: DeployFunction = async function (hre: HardhatRuntimeEnviro
     const { deploy } = hre.deployments;
     console.log('deployer', deployer)
 
-    //==== OVMFiatToken =================================
-    const L1_USDC= '0x07865c6e87b9f70255377e024ace6630c1eaa37f'
-    const owner = '0xc1eba383D94c6021160042491A5dfaF1d82694E6'
-    const USDC_NAME = 'USD Coin'
-    const USDC_SYMBOL = 'USDC'
-    const USDC_DECIMAL = 6
-
-    const OVMFiatTokenDeployer = await deploy("OVMFiatToken", {
-        from: deployer,
-        args: [
-            '0x4200000000000000000000000000000000000010',
-            L1_USDC,
-            owner,
-            USDC_NAME,
-            USDC_SYMBOL,
-            USDC_DECIMAL
-        ],
-        log: true,
-        deterministicDeployment: false,
-    });
-    console.log('OVMFiatToken', OVMFiatTokenDeployer.address)
-
     //==== USDT =================================
-    const L1_USDT= '0xfad6367e97217cc51b4cd838cc086831f81d38c2'
+    const L1_USDT= '0x42d3b260c761cD5da022dB56Fe2F89c4A909b04A'
 
     const USDTDeployer = await deploy("USDT", {
         from: deployer,
@@ -47,11 +25,11 @@ const deployContract: DeployFunction = async function (hre: HardhatRuntimeEnviro
 
     //==== verify =================================
 
-    // if (hre.network.name != "hardhat") {
-    //     await hre.run("etherscan-verify", {
-    //         network: hre.network.name
-    //     });
-    // }
+    if (hre.network.name != "hardhat") {
+        await hre.run("etherscan-verify", {
+            network: hre.network.name
+        });
+    }
 
 };
 

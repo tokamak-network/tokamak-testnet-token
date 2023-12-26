@@ -11,7 +11,7 @@ const deployContract: DeployFunction = async function (hre: HardhatRuntimeEnviro
 
     //==== OVMFiatToken =================================
     const L1_USDC= '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
-    const owner = ' '
+    const owner = '0x340C44089bc45F86060922d2d89eFee9e0CDF5c7'
     const USDC_NAME = 'USD Coin'
     const USDC_SYMBOL = 'USDC'
     const USDC_DECIMAL = 6

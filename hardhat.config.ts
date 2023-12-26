@@ -20,15 +20,19 @@ const config: HardhatUserConfig = {
       url: `${process.env.ETH_NODE_URI_TITAN}`,
       accounts: [`${process.env.PRIVATE_KEY}`],
       chainId: 55004,
-      gasPrice: 250000,
       deploy: ['deploy_titan'],
     },
     titangoerli: {
       url: `${process.env.ETH_NODE_URI_TITAN_GOERLI}`,
       accounts: [`${process.env.PRIVATE_KEY}`],
       chainId: 5050,
-      gasPrice: 250000,
       deploy: ['deploy_titan_goerli']
+    },
+    opsepolia: {
+      url: `${process.env.ETH_NODE_URI_OP_SEPOLIA}`,
+      accounts: [`${process.env.PRIVATE_KEY}`],
+      chainId: 11155420,
+      deploy: ['deploy_op_sepolia']
     },
   },
   // paths: {
@@ -53,6 +57,7 @@ const config: HardhatUserConfig = {
     // Obtain one at https://etherscan.io/
     // apiKey: `${process.env.ETHERSCAN_API_KEY}`
     apiKey: {
+      opsepolia: `${process.env.ETHERSCAN_API_KEY}`,
       goerli: `${process.env.ETHERSCAN_API_KEY}`,
       "titangoerli":"32IKRJ11RVV4GRTSYCZ9FKQAXH9H769VJS",
       "titan":"32IKRJ11RVV4GRTSYCZ9FKQAXH9H769VJS"
@@ -72,6 +77,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://explorer.titan.tokamak.network/api",
           browserURL: "https://explorer.titan.tokamak.network"
+        }
+      },
+      {
+        network: "opsepolia",
+        chainId: 11155420,
+        urls: {
+          apiURL: "https://https://sepolia-optimistic.etherscan.io/api",
+          browserURL: "https://sepolia-optimism.etherscan.io/"
         }
       }
     ]
