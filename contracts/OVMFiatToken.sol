@@ -1,5 +1,5 @@
 /**
- *Submitted for verification at Etherscan.io on 2021-08-31
+ *Submitted for verification at Optimistic.Etherscan.io on 2021-08-31
 */
 
 // Sources flattened with hardhat v2.3.3 https://hardhat.org
@@ -8,7 +8,7 @@
 
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.9;
+pragma solidity >=0.6.0 <0.8.0;
 
 /*
  * @dev Provides information about the current execution context, including the
@@ -22,7 +22,7 @@ pragma solidity ^0.8.9;
  */
 abstract contract Context {
     function _msgSender() internal view virtual returns (address payable) {
-        return payable(msg.sender);
+        return msg.sender;
     }
 
     function _msgData() internal view virtual returns (bytes memory) {
@@ -33,7 +33,7 @@ abstract contract Context {
 
 
 // File @openzeppelin/contracts/token/ERC20/IERC20.sol@v3.4.1
-pragma solidity ^0.8.9;
+pragma solidity >=0.6.0 <0.8.0;
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
@@ -112,7 +112,7 @@ interface IERC20 {
 
 // File @openzeppelin/contracts/math/SafeMath.sol@v3.4.1
 
-pragma solidity ^0.8.9;
+pragma solidity >=0.6.0 <0.8.0;
 
 /**
  * @dev Wrappers over Solidity's arithmetic operations with added overflow
@@ -328,7 +328,7 @@ library SafeMath {
 
 // File @openzeppelin/contracts/token/ERC20/ERC20.sol@v3.4.1
 
-pragma solidity ^0.8.9;
+pragma solidity >=0.6.0 <0.8.0;
 
 
 
@@ -378,7 +378,7 @@ contract ERC20 is Context, IERC20 {
      * All three of these values are immutable: they can only be set once during
      * construction.
      */
-    constructor (string memory name_, string memory symbol_) {
+    constructor (string memory name_, string memory symbol_) public {
         _name = name_;
         _symbol = symbol_;
         _decimals = 18;
@@ -634,7 +634,7 @@ contract ERC20 is Context, IERC20 {
 
 // File @openzeppelin/contracts/introspection/IERC165.sol@v3.4.1
 
-pragma solidity ^0.8.9;
+pragma solidity >=0.6.0 <0.8.0;
 
 /**
  * @dev Interface of the ERC165 standard, as defined in the
@@ -660,7 +660,7 @@ interface IERC165 {
 
 // File @eth-optimism/contracts/libraries/standards/IL2StandardERC20.sol@v0.4.6
 
-pragma solidity ^0.8.9;
+pragma solidity >=0.5.16 <0.8.0;
 
 
 interface IL2StandardERC20 is IERC20, IERC165 {
@@ -677,7 +677,7 @@ interface IL2StandardERC20 is IERC20, IERC165 {
 
 // File @eth-optimism/contracts/libraries/standards/L2StandardERC20.sol@v0.4.6
 
-pragma solidity ^0.8.9;
+pragma solidity >=0.5.16 <0.8.0;
 
 contract L2StandardERC20 is IL2StandardERC20, ERC20 {
     address public override l1Token;
@@ -731,7 +731,7 @@ contract L2StandardERC20 is IL2StandardERC20, ERC20 {
 
 // Copyright (c) 2021 Coinbase, Inc.
 
-pragma solidity ^0.8.9;
+pragma solidity >=0.5.16 <0.8.0;
 
 /**
  * @notice Ownable
@@ -793,7 +793,7 @@ abstract contract Ownable {
 
 // Copyright (c) 2021 Coinbase, Inc.
 
-pragma solidity ^0.8.9;
+pragma solidity >=0.5.16 <0.8.0;
 
 /**
  * @notice Pausable
@@ -930,7 +930,7 @@ abstract contract Pausable is Ownable {
  * SOFTWARE.
  */
 
-pragma solidity ^0.8.9;
+pragma solidity >=0.5.16 <0.8.0;
 
 abstract contract Blacklistable is Ownable {
     address internal _blacklister;
@@ -1010,7 +1010,7 @@ abstract contract Blacklistable is Ownable {
 
 // Copyright (c) 2021 Coinbase, Inc.
 
-pragma solidity ^0.8.9;
+pragma solidity >=0.5.16 <0.8.0;
 
 
 

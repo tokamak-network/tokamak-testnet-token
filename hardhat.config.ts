@@ -34,6 +34,16 @@ const config: HardhatUserConfig = {
       gasPrice: 2000000,
       // deploy: ['deploy_op_sepolia']
     },
+    titansepolia: {
+      url: `${process.env.ETH_NODE_URI_TITAN_SEPOLIA}`,
+      accounts: [`${process.env.PRIVATE_KEY}`],
+      chainId: 55007
+    },
+    thanossepolia: {
+      url: `${process.env.ETH_NODE_URI_THANOS_SEPOLIA}`,
+      accounts: [`${process.env.PRIVATE_KEY}`],
+      chainId: 111551118080
+    },
   },
   // paths: {
   //   deployments: 'deployments',
@@ -59,10 +69,28 @@ const config: HardhatUserConfig = {
     apiKey: {
       opsepolia: `${process.env.ETHERSCAN_API_KEY}`,
       goerli: `${process.env.ETHERSCAN_API_KEY}`,
+      titansepolia:  `${process.env.ETHERSCAN_API_KEY}`,
+      thanossepolia:  `${process.env.ETHERSCAN_API_KEY}`,
       "titangoerli":"32IKRJ11RVV4GRTSYCZ9FKQAXH9H769VJS",
       "titan":"32IKRJ11RVV4GRTSYCZ9FKQAXH9H769VJS"
     } ,
     customChains: [
+      {
+        network: "thanossepolia",
+        chainId: 111551118080,
+        urls: {
+            apiURL: "https://explorer.thanos-sepolia-test.tokamak.network/api",
+            browserURL: "https://explorer.thanos-sepolia-test.tokamak.network",
+        },
+      },
+      {
+        network: "titansepolia",
+        chainId: 55007,
+        urls: {
+            apiURL: "https://explorer.titan-sepolia.tokamak.network/api",
+            browserURL: "https://explorer.titan-sepolia.tokamak.network",
+        },
+      },
       {
         network: "titangoerli",
         chainId: 5050,
@@ -96,7 +124,15 @@ const config: HardhatUserConfig = {
     coinmarketcap: `${process.env.COINMARKETCAP_API_KEY}`
   },
   solidity: {
-    version: '0.8.9',
+    compilers: [
+      {
+        version: "0.7.6",
+      },
+      {
+        version: "0.8.9",
+        settings: {},
+      },
+    ],
     settings: {
       optimizer: {
         enabled: true,
